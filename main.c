@@ -1,15 +1,19 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
+#include "custom.h"
 
 int main(void) {
-    FILE *sheet = fopen("chemical_db.csv", "r");
+    Node *head = initialize(100);
 
-    char *read_data = malloc(sizeof(char));
-    fgets(read_data, 100, sheet);
-    printf("%s", read_data);
+    for (int i = 0; i<10; i++) {
+        head = insertStart(head, (i*13)+2);
+    }
 
-    free(read_data);
-    fclose(sheet);
-    return 0;
-}
+    while (head != NULL) {
+        printf("%d \n",head->value);
+        head = head->next;
+    }
+
+    printf("Reached end of list.");
+return 0;}
